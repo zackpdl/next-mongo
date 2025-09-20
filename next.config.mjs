@@ -6,6 +6,7 @@ const nextConfig = {
   // Base path for your cloud deployment
   basePath: '/app/stock',
   assetPrefix: '/app/stock',
+  
 
   // API routes configuration
   async rewrites() {
