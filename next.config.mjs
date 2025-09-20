@@ -3,6 +3,10 @@ const nextConfig = {
   experimental: {
     instrumentationHook: true,
   },
+  // Base path for your cloud deployment
+  basePath: '/app/stock',        // <-- Add this
+  assetPrefix: '/app/stock',     // <-- Add this so static files load correctly
+
   // API routes configuration
   async rewrites() {
     return [
@@ -16,7 +20,6 @@ const nextConfig = {
   // Redirects for better UX
   async redirects() {
     return [
-      // Redirect old routes if migrating from pages router
       {
         source: '/products',
         destination: '/product',
@@ -38,7 +41,7 @@ const nextConfig = {
   env: {
     CUSTOM_KEY: process.env.CUSTOM_KEY,
   },
-  // Image optimization for product images (if you plan to add them)
+  // Image optimization for product images
   images: {
     domains: ['localhost'],
     remotePatterns: [
