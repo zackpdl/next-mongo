@@ -3,25 +3,24 @@ const nextConfig = {
   experimental: {
     instrumentationHook: true,
   },
-  // Base path for your cloud deployment
+
+  // Base path for cloud deployment
   basePath: '/app/stock',
   assetPrefix: '/app/stock',
-  
 
   // API routes configuration
   async rewrites() {
     return [
-      // Optional: Add API versioning or custom routes if needed
       {
         source: '/api/v1/:path*',
         destination: '/api/:path*',
       },
     ];
   },
+
   // Redirects for better UX
   async redirects() {
     return [
-      
       {
         source: '/products',
         destination: '/product',
@@ -37,19 +36,15 @@ const nextConfig = {
         destination: '/stock',
         permanent: true,
       },
-      // Handle cloud deployment path
-      {
-        source: '/app/stock',
-        destination: '/',
-        permanent: false,
-      },
     ];
   },
-  // Environment variables for API configuration
+
+  // Environment variables
   env: {
     CUSTOM_KEY: process.env.CUSTOM_KEY,
   },
-  // Image optimization for product images
+
+  // Image optimization for external domains
   images: {
     domains: ['localhost'],
     remotePatterns: [
@@ -59,6 +54,9 @@ const nextConfig = {
       },
     ],
   },
+
+  // Optional: Enable strict mode for React
+  reactStrictMode: true,
 };
 
 export default nextConfig;

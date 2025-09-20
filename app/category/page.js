@@ -23,8 +23,8 @@ export default function Home() {
     },
   ]
 
-  const API_BASE = process.env.NEXT_PUBLIC_API_URL;
-  console.log(process.env.NEXT_PUBLIC_API_URL)
+  const API_BASE = '/app/stock/api';
+  console.log('API_BASE:', API_BASE)
 
   const [categoryList, setCategoryList] = useState([]);
   const [editMode, setEditMode] = useState(false);

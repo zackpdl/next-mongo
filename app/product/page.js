@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const API_BASE = process.env.NEXT_PUBLIC_API_URL;
+  const API_BASE = '/app/stock/api';
   console.debug("API_BASE", API_BASE);
   const { register, handleSubmit } = useForm();
   const [products, setProducts] = useState([]);
