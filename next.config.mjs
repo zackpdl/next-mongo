@@ -3,6 +3,51 @@ const nextConfig = {
   experimental: {
     instrumentationHook: true,
   },
+  // API routes configuration
+  async rewrites() {
+    return [
+      // Optional: Add API versioning or custom routes if needed
+      {
+        source: '/api/v1/:path*',
+        destination: '/api/:path*',
+      },
+    ];
+  },
+  // Redirects for better UX
+  async redirects() {
+    return [
+      // Redirect old routes if migrating from pages router
+      {
+        source: '/products',
+        destination: '/product',
+        permanent: true,
+      },
+      {
+        source: '/categories',
+        destination: '/category',
+        permanent: true,
+      },
+      {
+        source: '/inventory',
+        destination: '/stock',
+        permanent: true,
+      },
+    ];
+  },
+  // Environment variables for API configuration
+  env: {
+    CUSTOM_KEY: process.env.CUSTOM_KEY,
+  },
+  // Image optimization for product images (if you plan to add them)
+  images: {
+    domains: ['localhost'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+    ],
+  },
 };
 
 export default nextConfig;
