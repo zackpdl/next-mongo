@@ -4,8 +4,8 @@ const nextConfig = {
     instrumentationHook: true,
   },
   // Base path for your cloud deployment
-  basePath: '/app/stock',        // <-- Add this
-  assetPrefix: '/app/stock',     // <-- Add this so static files load correctly
+  basePath: '/app/stock',
+  assetPrefix: '/app/stock',
 
   // API routes configuration
   async rewrites() {
@@ -20,6 +20,7 @@ const nextConfig = {
   // Redirects for better UX
   async redirects() {
     return [
+      
       {
         source: '/products',
         destination: '/product',
@@ -34,6 +35,12 @@ const nextConfig = {
         source: '/inventory',
         destination: '/stock',
         permanent: true,
+      },
+      // Handle cloud deployment path
+      {
+        source: '/app/stock',
+        destination: '/',
+        permanent: false,
       },
     ];
   },
